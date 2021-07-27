@@ -18,9 +18,10 @@ export class JobsController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  getAll(req, res, next) {
+  async getAll(req, res, next) {
     try {
-      // Add code here
+      const jobs = await jobsService.getAll()
+      res.send(jobs)
     } catch (error) {
       next(error)
     }
@@ -33,9 +34,10 @@ export class JobsController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  getById(req, res, next) {
+  async getById(req, res, next) {
     try {
-      // Add code here
+      const job = await jobsService.getById(req.params.id)
+      res.send(job)
     } catch (error) {
       next(error)
     }
@@ -48,9 +50,10 @@ export class JobsController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  create(req, res, next) {
+  async create(req, res, next) {
     try {
-      // Add code here
+      const job = await jobsService.create(req.body)
+      res.send(job)
     } catch (error) {
       next(error)
     }
@@ -63,9 +66,11 @@ export class JobsController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  edit(req, res, next) {
+  async edit(req, res, next) {
     try {
-      // Add code here
+      req.body.id = req.params.id
+      const job = await jobsService.edit(req.body)
+      res.send(job)
     } catch (error) {
       next(error)
     }
@@ -78,9 +83,10 @@ export class JobsController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  delete(req, res, next) {
+  async delete(req, res, next) {
     try {
-      // Add code here
+      await jobsService.delete(req.params.id)
+      res.send({ message: 'Successfully Deleted Car' })
     } catch (error) {
       next(error)
     }
