@@ -1,6 +1,6 @@
 import { jobsService } from '../services/JobsService'
 import BaseController from '../utils/BaseController'
-export class Jobs extends BaseController {
+export class JobsController extends BaseController {
   constructor() {
     super('api/jobs')
     this.router
