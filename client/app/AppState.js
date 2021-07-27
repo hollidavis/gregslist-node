@@ -1,12 +1,20 @@
-import { dev } from './env.js'
+import Car from './Models/Car.js'
+import House from './Models/House.js'
+import Job from './Models/Job.js'
 import { EventEmitter } from './Utils/EventEmitter.js'
 import { isValidProp } from './Utils/isValidProp.js'
 
 class AppState extends EventEmitter {
-  /** @type {import('./Models/Value.js').Value[]} */
-  values = []
+  /** @type {Car[]} */
+  cars = []
+  /** @type {House[]} */
+  houses = []
+
+  /** @type {Job[]} */
+  jobs = []
 }
 
+// Don't touch this!
 export const ProxyState = new Proxy(new AppState(), {
   get(target, prop) {
     isValidProp(target, prop)
@@ -19,8 +27,3 @@ export const ProxyState = new Proxy(new AppState(), {
     return true
   }
 })
-
-if (dev) {
-  // @ts-ignore
-  window.ProxyState = ProxyState
-}
