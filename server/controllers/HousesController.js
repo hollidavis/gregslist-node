@@ -8,6 +8,7 @@ export class HousesController extends BaseController {
       .get('/:id', this.getById)
       .post('', this.create)
       .put('/:id', this.edit)
+      .put('/:id/bid', this.bid)
       .delete('/:id', this.delete)
   }
 
@@ -18,9 +19,10 @@ export class HousesController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  getAll(req, res, next) {
+  async getAll(req, res, next) {
     try {
-      // Add code here
+      const houses = await housesService.getAll()
+      res.send(houses)
     } catch (error) {
       next(error)
     }
@@ -33,9 +35,10 @@ export class HousesController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  getById(req, res, next) {
+  async getById(req, res, next) {
     try {
-      // Add code here
+      const house = await housesService.getById(req.params.id)
+      res.send(house)
     } catch (error) {
       next(error)
     }
@@ -48,9 +51,10 @@ export class HousesController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  create(req, res, next) {
+  async create(req, res, next) {
     try {
-      // Add code here
+      const house = await housesService.create(req.body)
+      res.send(house)
     } catch (error) {
       next(error)
     }
@@ -63,14 +67,31 @@ export class HousesController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  edit(req, res, next) {
+  async edit(req, res, next) {
     try {
-      // Add code here
+      req.body.id = req.params.id
+      const house = await housesService.edit(req.body)
+      res.send(house)
     } catch (error) {
       next(error)
     }
   }
 
+  /**
+        * Bid on house
+        * @param {import("express").Request} req
+        * @param {import("express").Response} res
+        * @param {import("express").NextFunction} next
+        */
+  async bid(req, res, next) {
+    try {
+      const bid = { price: req.body.price, id: req.params.id }
+      const house = await housesService.bid(bid)
+      res.send(house)
+    } catch (error) {
+      next(error)
+    }
+  }
   /**
        * Delete house
        * @param {import("express").Request} req
@@ -78,9 +99,10 @@ export class HousesController extends BaseController {
        * @param {import("express").NextFunction} next
        */
 
-  delete(req, res, next) {
+  async delete(req, res, next) {
     try {
-      // Add code here
+      await housesService.delete(req.params.id)
+      res.send({ message: 'Successfully Deleted House' })
     } catch (error) {
       next(error)
     }
