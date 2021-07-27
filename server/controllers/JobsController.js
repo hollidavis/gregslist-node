@@ -2,7 +2,7 @@ import { jobsService } from '../services/JobsService'
 import BaseController from '../utils/BaseController'
 export class Jobs extends BaseController {
   constructor() {
-    super('')
+    super('api/jobs')
     this.router
       .get('', this.getAll)
       .get('/:id', this.getById)
@@ -12,7 +12,7 @@ export class Jobs extends BaseController {
   }
 
   /**
-       * Function Description
+       * Get all jobs
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -27,7 +27,7 @@ export class Jobs extends BaseController {
   }
 
   /**
-       * Function Description
+       * Get job by ID
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -42,7 +42,7 @@ export class Jobs extends BaseController {
   }
 
   /**
-       * Function Description
+       * Create job
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -57,7 +57,7 @@ export class Jobs extends BaseController {
   }
 
   /**
-       * Function Description
+       * Edit job
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -72,7 +72,7 @@ export class Jobs extends BaseController {
   }
 
   /**
-       * Function Description
+       * Delete car
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next

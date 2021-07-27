@@ -12,7 +12,7 @@ export class HousesController extends BaseController {
   }
 
   /**
-       * Function Description
+       * Get all houses
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -27,7 +27,7 @@ export class HousesController extends BaseController {
   }
 
   /**
-       * Function Description
+       * Get house by ID
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -42,7 +42,7 @@ export class HousesController extends BaseController {
   }
 
   /**
-       * Function Description
+       * Create house
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -57,7 +57,7 @@ export class HousesController extends BaseController {
   }
 
   /**
-       * Function Description
+       * Edit house
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
@@ -72,7 +72,7 @@ export class HousesController extends BaseController {
   }
 
   /**
-       * Function Description
+       * Delete house
        * @param {import("express").Request} req
        * @param {import("express").Response} res
        * @param {import("express").NextFunction} next
